@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Word Guess</title>
+
+    <!-- Added a link to Bootstrap-->
+
 </head>
+
 <body>
-    <h1>Word Guess</h1>
-</body
->
+    <Header>The Psychic Game</Header>
+    <!-- Result Card -->
+    <div class="container">
+        <div class="card">
+            <h3 class="card-header"> Guess What letter I'm thinking of...</h3>
+            <div class="card-body">
+                <h1 id="word"></h1>
+                <h1 id="guess"></h1>
+                <h1 id="wins"></h1>
+                <hr>
+                <h1 id="losses"></h1>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript">
+
+
+        var wins
+        var losses
+        var guesses
+        var guessesLeft
+        var letters = ["A", "B", "C"];
+
+        document.onkeyup = function (event) {
+
+            var randLetter = letters[Math.floor(Math.random() * letters.length)];
+
+            console.log(randLetter)
+
+        };
+
+        //Wins: (# of times the user has guessed the letter correctly)
+
+        //Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+        //Guesses Left: (# of guesses left. This will update)
+        //      alert("You like sushi: " + confirmSushi);
+
+
+        //Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+
+        //When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
+
+        //When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+
+        //clear button
+        //<button onClick="clear()">Clear</button>
+        //function clear() {
+        //document.getElementById("guesses").reset();}
+
+    </script>
+</body>
+
 </html>
