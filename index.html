@@ -35,13 +35,13 @@
         var losses
         var guesses
         var guessesLeft
-        var letters = ["A", "B", "C"];
+        var identities = ["Race", "Culture", "Gender", "Sexuality"];
 
         document.onkeyup = function (event) {
 
-            var randLetter = letters[Math.floor(Math.random() * letters.length)];
+            var randWord = identities[Math.floor(Math.random() * identities.length)];
 
-            console.log(randLetter)
+            console.log(randWord)
 
         };
 
