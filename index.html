@@ -21,7 +21,8 @@
         <p id="comp-Choice"></p>
         <p id="wins-Text"></p>
         <p id="losses-Text"></p>
-        <p id="guesses-Text"></p>
+        <p id="guessesLeft-Text"></p>
+        <p id="guesses-SoFar"></p>
 
     </div>
 
@@ -35,13 +36,15 @@
 
         var winsTxt = document.getElementById("wins-Text");
         var wins = 0;
-        
+
         var losses = 0;
         var lossTxt = document.getElementById("losses-Text");
-        
-        var guessesTxt = document.getElementById("guesses-Text");
+
+        var guessesLeftTxt = document.getElementById("guessesLeft-Text");
         var guessesLeft = 3;
 
+        var guessesSoFarTxt = document.getElementById("guesses-SoFar");
+        var guessesSoFar = [];
 
 
         // Run on key
@@ -50,42 +53,41 @@
             // Determines guess
 
             var userGuess = event.key;
-            userGuessTxt.textContent = "You chose: " + userGuess;
-            console.log("You chose: " + userGuess)
+            userGuessTxt.textContent = "You Guessed: " + userGuess;
 
             // Chooses Random Word/Letter
 
             var compGuess = identities[Math.floor(Math.random() * identities.length)];
             compChoice.textContent = "Computer chose: " + compGuess;
-            console.log("Computer chose: " + compGuess);
+            guessesSoFarTxt.textContent = "Your guesses so far: " + guessesSoFar;
 
             //Wins: (# of times the user has guessed the letter correctly)
+            //When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
             if (compGuess === userGuess) {
                 wins++
                 winsTxt.textContent = "Your Wins: " + wins;
-                console.log("User wins:" + wins);
             }
             //Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
-            //Guesses Left: (# of guesses left. This will update)
-            //Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+            //When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins)
             else {
                 losses++
+                lossTxt.textContent = "Your Losses: " + losses;
+                //Guesses Left: (# of guesses left. This will update)
+                //Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
                 guessesLeft--
-                "#guessesLeft".textContent = "Guesses: " + guessesLeft;
-                console.log("Your Guesses: " + guessesLeft);
+                guessesLeftTxt.textContent = "Guesses Left: " + guessesLeft;
+
             }
+
+            console.log("You chose: " + userGuess);
+            console.log("Computer chose: " + compGuess);
+            console.log("User wins:" + wins);
+            console.log("User losses:" + losses);
+            console.log("Guesses Left: " + guessesLeft);
+            console.log("Your guesses so far: " + guessesSoFar.push(userGuess));
+
         };
 
-
-
-        //When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
-
-        //When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
-
-        //clear button
-        //<button onClick="clear()">Clear</button>
-        //function clear() {
-        //document.getElementById("guesses").reset();}
 
     </script>
 </body>
