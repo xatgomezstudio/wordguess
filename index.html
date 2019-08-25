@@ -5,55 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Word Guess</title>
+    <title>JS HW</title>
 
     <!-- Added a link to Bootstrap-->
 
 </head>
 
 <body>
-    <Header>The Psychic Game</Header>
-    <!-- Result Card -->
-    <div class="container">
-        <div class="card">
-            <h3 class="card-header"> Guess What letter I'm thinking of...</h3>
-            <div class="card-body">
-                <h1 id="word"></h1>
-                <h1 id="guess"></h1>
-                <h1 id="wins"></h1>
-                <hr>
-                <h1 id="losses"></h1>
-            </div>
-        </div>
+    <Header>The Letter/Word Guess Game</Header>
+
+    <!-- Game Card -->
+    <div id="game">
+        <p id="directions">Take a guess!</p>
+        <p id="user-Guess"></p>
+        <p id="comp-Choice"></p>
+        <p id="wins-Text"></p>
+        <p id="losses-Text"></p>
+        <p id="guesses-Text"></p>
+
     </div>
-    </div>
-    </div>
+
     <script type="text/javascript">
 
+        var identities = ["r", "c", "g", "s"];
 
-        var wins
-        var losses
-        var guesses
-        var guessesLeft
-        var identities = ["Race", "Culture", "Gender", "Sexuality"];
+        var userGuessTxt = document.getElementById("user-Guess");
 
+        var compChoice = document.getElementById("comp-Choice");
+
+        var winsTxt = document.getElementById("wins-Text");
+        var wins = 0;
+        
+        var losses = 0;
+        var lossTxt = document.getElementById("losses-Text");
+        
+        var guessesTxt = document.getElementById("guesses-Text");
+        var guessesLeft = 3;
+
+
+
+        // Run on key
         document.onkeyup = function (event) {
 
-            var randWord = identities[Math.floor(Math.random() * identities.length)];
+            // Determines guess
 
-            console.log(randWord)
+            var userGuess = event.key;
+            userGuessTxt.textContent = "You chose: " + userGuess;
+            console.log("You chose: " + userGuess)
 
+            // Chooses Random Word/Letter
+
+            var compGuess = identities[Math.floor(Math.random() * identities.length)];
+            compChoice.textContent = "Computer chose: " + compGuess;
+            console.log("Computer chose: " + compGuess);
+
+            //Wins: (# of times the user has guessed the letter correctly)
+            if (compGuess === userGuess) {
+                wins++
+                winsTxt.textContent = "Your Wins: " + wins;
+                console.log("User wins:" + wins);
+            }
+            //Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+            //Guesses Left: (# of guesses left. This will update)
+            //Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
+            else {
+                losses++
+                guessesLeft--
+                "#guessesLeft".textContent = "Guesses: " + guessesLeft;
+                console.log("Your Guesses: " + guessesLeft);
+            }
         };
 
-        //Wins: (# of times the user has guessed the letter correctly)
 
-        //Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
-
-        //Guesses Left: (# of guesses left. This will update)
-        //      alert("You like sushi: " + confirmSushi);
-
-
-        //Your Guesses So Far: (the specific letters that the user typed. Display these until the user either wins or loses.)
 
         //When the player wins, increase the Wins counter and start the game over again (without refreshing the page).
 
