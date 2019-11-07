@@ -1,0 +1,89 @@
+*{
+    border: 2px solid;
+  }
+  label {
+    float: center;
+    text-align: center;
+  }
+  
+  input {
+    float: center;
+    text-align: center;
+  }
+  
+  #name{
+    display: inline-block;
+    background: #4aaaa5;
+    color: #ffffff;
+    text-align: center;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    float: left;
+  }
+  
+  body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: 'Arial', 'Helvetica Neue', 'Helvetica', 'sans-serif';
+      font-size: 18px;
+      background: #efeee7;
+  }
+  header{
+    border: 2px solid;
+  }
+  
+  navbar{
+    float: right;
+    text-align: right;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    margin: 30px;
+    overflow: auto;
+  }
+  
+  h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+    margin-bottom: 3px;
+    border-bottom-color: #666666;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: left;
+    background: #4aaaa5;
+  }
+  
+  .container {
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 70px;
+    margin-top: 40px;
+    color: #4aaaa5;
+    background: #ffffff;
+    border-color: #dddddd;
+    float: center;
+    overflow: auto;
+  }
+  
+  footer {
+    position: absolute;
+    width: 100%;
+    height: 2.5rem;
+    margin: 0;
+    bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background: #666666;
+  }
+ 
