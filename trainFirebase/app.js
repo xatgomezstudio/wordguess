@@ -27,7 +27,7 @@ $("#submit").on("click", function (event) {
   //variables
   var trainName = $("#name").val();
   var destination = $("#destination").val();
-  var nextArrival = $("#nextArrival").val();
+  var firstTrain = $('#firstTrain').val();
   var frequency = $("#frequency").val();
 
   initiateTime = moment().format("HH:mm");
@@ -35,11 +35,13 @@ $("#submit").on("click", function (event) {
   var newTrain = {
     name: trainName,
     time: initiateTime,
+    firstTrain: firstTrain,
     destination: destination,
-    arrival: nextArrival,
     frequency: frequency,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
   };
+
+  console.log(newTrain);
 
   // Uploads
   database.ref().push(newTrain);
@@ -55,19 +57,22 @@ $("#submit").on("click", function (event) {
 
 database.ref().on("child_added", function (snapshot) {
 
+  // Snap dat ass
   var name = snapshot.val().name;
   var destination = snapshot.val().destination;
+
+  // A moment for moment.js
   var frequency = snapshot.val().frequency;
   var firstTrain = snapshot.val().firstTrain;
-
   var firstTrainConverted = moment(firstTrain, "HH:mm").subtract(1, "years");
   var currentTime = moment();
-  console.log("current time: " + moment(currentTime).format("hh:mm"));
-  var timeDiff = moment().diff(moment(firstTrainConverted), "minutes");
-  var remainder = timeDiff % frequency;
-
+  console.log("current time: " + moment(currentTime).format("hh:mm"));
+  var timeDifference = moment().diff(moment(firstTrainConverted), "minutes");
+  var remainder = timeDifference % frequency;
   var minutesAway = frequency - remainder;
+
   var nextArrival = moment().add(minutesAway, "minutes");
+
 
   //DISPLAY
   ////////////////////////////////////////////////////////////////
@@ -76,19 +81,17 @@ database.ref().on("child_added", function (snapshot) {
   console.log("Destination: " + destination);
   console.log("Frequency: " + frequency);
   console.log("First Train: " + firstTrain);
-  console.log("Next Arrival: " + nextArrival.format("hh:mm a"));
+  console.log("Next Arrival: " + nextArrival.format("hh:mm"));
   console.log("Minutes Away: " + minutesAway);
-
-  // Alert
-  alert("Train successfully added");
 
   //New row onto table
   $("#trainTable").append(
     "<tr>" + "<td>" + name +
     "</td>" + "<td>" + destination +
     "</td>" + "<td>" + frequency +
-    "</td>" + "<td>" + nextArrival.format("HH:mm a") +
+    "</td>" + "<td>" + nextArrival.format("hh:mm") +
     "</td>" + "<td>" + minutesAway +
     "</td>" + "</tr>");
 
 });
+
